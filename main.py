@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import QDate
 from PyQt5 import uic
 import pymysql
+import random
 #from utils_for_sql import *
 
 ## python실행파일 디렉토리
@@ -22,6 +23,13 @@ class WindowClass(QWidget, from_class):
         vendor_obj_name = 'VendorID,VendorName,Vendoraddress,VendorTel,VendorFax'
         vendor_search_combo = {'거래처아이디':'VendorID','거래처명':'VendorName','전화번호':'VendorTel','팩스번호':'VendorFax'}
 
+        machine_obj_name = 'MachineID, invoiceID, productID'
+        machine_search_combo = {'기기번호':'machineID','송장번호':'invoiceID','상품번호':'productID' }
+
+        tech_obj_name = 'TechnicianID, TechnicianName'
+
+        order_obj_name = 'OrderID, MachineID_2, Orderdate_2, Inst_BusID, Rem_BusID, TechnicianID_2'
+
         product_temp_obj_name = 'ProductID,ProductName,ManufacName,Quantity,UnitPrice'
 
         self.setupUi(self)
@@ -31,7 +39,7 @@ class WindowClass(QWidget, from_class):
         self.combobox_additem(self.search_bussiness_comboBox,bussiness_search_combo)
         self.bussiness_input_btn.clicked.connect(lambda :  self.Insert_Table(self.view_busnesslocation_input,bussiness_obj_name,"Bus_Loca"))
         self.view_busnesslocation_input.clicked.connect(lambda: self.Get_RowData(self.view_busnesslocation_input,bussiness_obj_name))
-        self.bussiness_modify_btn.clicked.connect(lambda: self.Modify_Table(self.view_busnesslocation_input,bussiness_obj_name,"BusID","Bus_Loca"))
+        # self.bussiness_modify_btn.clicked.connect(lambda: self.Modify_Table(self.view_busnesslocation_input,bussiness_obj_name,"BusID","Bus_Loca"))
         self.bussiness_delete_btn.clicked.connect(lambda: self.Delete_Row("BusID",self.view_busnesslocation_input,"Bus_Loca"))
 
         ##Vendor
@@ -41,17 +49,48 @@ class WindowClass(QWidget, from_class):
             lambda: self.Insert_Table(self.view_vendor_input, vendor_obj_name, "vendor"))
         self.view_vendor_input.clicked.connect(
             lambda: self.Get_RowData(self.view_vendor_input, vendor_obj_name))
-        self.vendor_modify_btn.clicked.connect(
-            lambda: self.Modify_Table(self.view_vendor_input, vendor_obj_name, "VendorID", "vendor"))
+        # self.vendor_modify_btn.clicked.connect(
+            # lambda: self.Modify_Table(self.view_vendor_input, vendor_obj_name, "VendorID", "vendor"))
         self.vendor_delete_btn.clicked.connect(
             lambda: self.Delete_Row("VendorID", self.view_vendor_input, "vendor"))
+
+        ##구매기기현황
+        self.View_Table(self.view_machine_input, "machine")
+        self.combobox_additem(self.search_machine_comboBox, machine_search_combo)
+        self.machine_input_btn.clicked.connect(lambda: self.Insert_Table(self.view_machine_input, machine_obj_name, "machine"))
+        self.view_machine_input.clicked.connect(lambda: self.Get_RowData(self.view_machine_input, machine_obj_name))
+        # self.machine_modify_btn.clicked.connect(
+            # lambda: self.Modify_Table(self.view_machine_input, machine_obj_name, "MachineID", "machine"))
+        self.machine_delete_btn.clicked.connect(
+            lambda: self.Delete_Row("MachineID", self.view_machine_input, "machine"))
+        
+        ##담당자현황
+        self.View_Table(self.view_tech_input, "technician")
+        self.tech_input_btn.clicked.connect(lambda: self.Insert_Table(self.view_tech_input, tech_obj_name, "technician"))
+        self.view_tech_input.clicked.connect(lambda: self.Get_RowData(self.view_tech_input, tech_obj_name))
+        # self.tech_modify_btn.clicked.connect(
+            # lambda: self.Modify_Table(self.view_tech_input, tech_obj_name, "TechnicianID", "TechnicianName"))
+        self.tech_delete_btn.clicked.connect(
+            lambda: self.Delete_Row("TechnicianID", self.view_tech_input, "technician"))
+
+         ##설치관리
+        self.View_Table(self.view_order_input, "order_t")
+        self.combobox_additem(self.search_order_comboBox_3, self.Comb_List_1('machine'))
+        self.combobox_additem(self.search_order_comboBox_4, self.Comb_List_2('bus_loca'))
+        self.combobox_additem(self.search_order_comboBox_5, self.Comb_List_2('bus_loca'))
+        self.combobox_additem(self.search_order_comboBox_6, self.Comb_List_2('technician'))
+        self.order_input_btn.clicked.connect(lambda: self.Insert_Table_order(self.view_order_input, "order_t"))
+        self.view_order_input.clicked.connect(lambda: self.Get_RowData(self.view_order_input, order_obj_name))
+        self.order_delete_btn.clicked.connect(lambda: self.Delete_Row("OrderID", self.view_order_input, "order_t"))        
 
         ##PurchaseOrder
         ##기기구매주문리스트
         self.View_Table(self.view_PurchaseOrder_input, "pur_order")
         self.product_temp_input_btn.clicked.connect(lambda: self.Insert_temp_table(self.view_Product_input,product_temp_obj_name))
-        ##기기정보등록
+       
+        ##발주기기정보등록
         self.View_Table(self.view_Product_input, "product")
+
         ##거래처조회
         self.View_Table(self.view_vendor_PurOrder, "vendor")
         self.combobox_additem(self.search_vendor_PurOrder_comboBox, bussiness_search_combo)
@@ -65,10 +104,10 @@ class WindowClass(QWidget, from_class):
     def connectiondb(self):
         db_info = {
             "host": "localhost",
-            "port": 3307,
+            "port": 3306,
             "user": "root",
-            "password": "1234",
-            "db": "dbproject",
+            "password": "1q2w3e4r",
+            "db": "grouppjt",
             "charset": "utf8",
         }
         self.db_connect = pymysql.connect(**db_info)
@@ -100,11 +139,13 @@ class WindowClass(QWidget, from_class):
         row_num = obj_name.rowCount()
         obj_name.insertRow(row_num)
 
+        num = random.randrange(1,10000)
+
         insert_obj_name_list = insert_obj_names.split(',')
         insert_sql_list = []
 
-        obj_name.setItem(row_num, 0, QTableWidgetItem(str(row_num)))
-        insert_sql_list.append(str(row_num))
+        obj_name.setItem(row_num, 0, QTableWidgetItem(str(num)))
+        insert_sql_list.append(str(num))
         for j in range(len(insert_obj_name_list) - 1):
             text = eval('self.' + insert_obj_name_list[j + 1] + '.text()')
             obj_name.setItem(row_num, j + 1, QTableWidgetItem(text))
@@ -112,14 +153,59 @@ class WindowClass(QWidget, from_class):
 
         return insert_sql_list
 
+    def Insert_temp_table_order(self,obj_name):
+        row_num = obj_name.rowCount()
+        obj_name.insertRow(row_num)
+
+        insert_sql_list = []
+
+        num = random.randrange(1,10000)
+
+        obj_name.setItem(row_num, 0, QTableWidgetItem(str(num)))
+        insert_sql_list.append(str(num))
+
+        insert_sql_list_order = [self.search_order_comboBox_3.currentText(), self.Orderdate.text(), self.search_order_comboBox_4.currentText().split()[0],self.search_order_comboBox_5.currentText().split()[0], self.search_order_comboBox_6.currentText().split()[0]]
+        insert_sql_list.extend(insert_sql_list_order)
+
+        for j in range(len(insert_sql_list) - 1):
+            obj_name.setItem(row_num, j + 1, QTableWidgetItem(insert_sql_list[j+1]))
+        # print(insert_sql_list)
+        return insert_sql_list
+
+    
     def Insert_Table(self,obj_name,insert_obj_names,table):
 
         insert_sql_list = self.Insert_temp_table(obj_name,insert_obj_names)
 
-        for j in range(len(insert_sql_list)-1):
-            insert_sql = f"INSERT into {table} values ("
+        insert_sql = f"INSERT into {table} values ("
 
-            for i in range(len(insert_sql_list)):
+        for i in range(len(insert_sql_list)):
+            insert_sql += "'"+insert_sql_list[i]+"'"
+            if i != len(insert_sql_list)-1:
+                insert_sql += ','
+            else:
+                insert_sql += ")"
+
+        with self.connectiondb() as db_connect:
+            with db_connect.cursor() as cur:
+                cur.execute(insert_sql)
+                db_connect.commit()
+
+    def Insert_Table_order(self,obj_name,table):
+
+        insert_sql_list = self.Insert_temp_table_order(obj_name)
+        print(insert_sql_list)
+        
+        insert_sql = f"INSERT into {table} values ("
+
+        for i in range(len(insert_sql_list)):
+            if insert_sql_list[i] == 'null':
+                insert_sql += insert_sql_list[i]
+                if i != len(insert_sql_list)-1:
+                    insert_sql += ','
+                else:
+                    insert_sql += ")"
+            else:
                 insert_sql += "'"+insert_sql_list[i]+"'"
                 if i != len(insert_sql_list)-1:
                     insert_sql += ','
@@ -129,7 +215,7 @@ class WindowClass(QWidget, from_class):
         with self.connectiondb() as db_connect:
             with db_connect.cursor() as cur:
                 cur.execute(insert_sql)
-                db_connect.commit()
+                db_connect.commit()    
 
     def View_Table(self,obj_name,table):
 
@@ -178,6 +264,7 @@ class WindowClass(QWidget, from_class):
                 db_connect.commit()
 
         self.View_Table(view_obj_name, table)
+
     def Get_RowData(self,obj_name,input_opj_name):
         items=obj_name.selectedItems()
         input_opj_name_list = input_opj_name.split(',')
@@ -192,6 +279,29 @@ class WindowClass(QWidget, from_class):
                 date=items[i].text().split('-')
                 input_opj.setDate(QDate(int(date[0]),int(date[1]),int(date[2])))
 
+    def Comb_List_1(self, table):
+        select_sql = f"SELECT * from {table}"
+        with self.connectiondb() as db_connect:
+            with db_connect.cursor() as cur:
+                cur.execute(select_sql)
+                res = cur.fetchall()
+            comb_list = []
+            for data in res:
+                comb_list.append(str(data[0]))
+        return comb_list
+    
+    def Comb_List_2(self, table):
+        select_sql = f"SELECT * from {table}"
+        with self.connectiondb() as db_connect:
+            with db_connect.cursor() as cur:
+                cur.execute(select_sql)
+                res = cur.fetchall()
+            comb_list = ['null']
+            for data in res:
+                comb_list.append(str(data[0])+" "+str(data[1]))
+        return comb_list    
+    
+
 # 실행
 if __name__ == '__main__':
 
@@ -201,3 +311,4 @@ if __name__ == '__main__':
     myWindow.show()
 
     app.exec_()
+    

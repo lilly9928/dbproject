@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>691</width>
-    <height>588</height>
+    <width>1088</width>
+    <height>940</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,6 +16,9 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="currentIndex">
       <number>2</number>
      </property>
@@ -33,7 +36,7 @@
         </rect>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
@@ -307,9 +310,9 @@
         <widget class="QLabel" name="contract_view_label_45">
          <property name="geometry">
           <rect>
-           <x>240</x>
+           <x>260</x>
            <y>410</y>
-           <width>71</width>
+           <width>111</width>
            <height>16</height>
           </rect>
          </property>
@@ -320,9 +323,9 @@
         <widget class="QLabel" name="contract_view_label_47">
          <property name="geometry">
           <rect>
-           <x>240</x>
+           <x>260</x>
            <y>440</y>
-           <width>61</width>
+           <width>141</width>
            <height>20</height>
           </rect>
          </property>
@@ -359,7 +362,7 @@
         <widget class="QLineEdit" name="ProductName">
          <property name="geometry">
           <rect>
-           <x>80</x>
+           <x>110</x>
            <y>430</y>
            <width>131</width>
            <height>20</height>
@@ -431,7 +434,7 @@
         <widget class="QDateEdit" name="PurOrderDate">
          <property name="geometry">
           <rect>
-           <x>310</x>
+           <x>380</x>
            <y>440</y>
            <width>101</width>
            <height>22</height>
@@ -464,7 +467,7 @@
         <widget class="QLineEdit" name="ProductID">
          <property name="geometry">
           <rect>
-           <x>80</x>
+           <x>110</x>
            <y>410</y>
            <width>131</width>
            <height>20</height>
@@ -487,7 +490,7 @@
         <widget class="QLineEdit" name="UnitPrice">
          <property name="geometry">
           <rect>
-           <x>160</x>
+           <x>190</x>
            <y>480</y>
            <width>51</width>
            <height>20</height>
@@ -502,7 +505,7 @@
           <rect>
            <x>100</x>
            <y>480</y>
-           <width>51</width>
+           <width>81</width>
            <height>21</height>
           </rect>
          </property>
@@ -611,7 +614,7 @@
         <widget class="QLineEdit" name="ManufacName">
          <property name="geometry">
           <rect>
-           <x>80</x>
+           <x>110</x>
            <y>450</y>
            <width>131</width>
            <height>20</height>
@@ -976,43 +979,58 @@
       <attribute name="title">
        <string>설치관리</string>
       </attribute>
-      <widget class="QTableWidget" name="contract_list_view_5">
+      <widget class="QTableWidget" name="view_order_input">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>40</y>
-         <width>581</width>
-         <height>101</height>
+         <width>901</width>
+         <height>201</height>
         </rect>
        </property>
-      </widget>
-      <widget class="QLabel" name="contract_view_label_29">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>150</y>
-         <width>104</width>
-         <height>17</height>
-        </rect>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
        </property>
-       <property name="font">
-        <font>
-         <family>Agency FB</family>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
        </property>
-       <property name="text">
-        <string>설치 담당</string>
-       </property>
+       <column>
+        <property name="text">
+         <string>오더 ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>기기번호</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>오더날짜</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>설치사업장 ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>철거사업장 ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>담당자 ID</string>
+        </property>
+       </column>
       </widget>
       <widget class="QLabel" name="contract_view_label_30">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>104</width>
+         <width>171</width>
          <height>17</height>
         </rect>
        </property>
@@ -1028,59 +1046,10 @@
         <string>설치 리스트 정보</string>
        </property>
       </widget>
-      <widget class="QLabel" name="contract_view_label_31">
-       <property name="geometry">
-        <rect>
-         <x>240</x>
-         <y>150</y>
-         <width>61</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>담당자ID</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="contract_search_btn_7">
-       <property name="geometry">
-        <rect>
-         <x>540</x>
-         <y>150</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>조회</string>
-       </property>
-      </widget>
-      <widget class="QTableWidget" name="contract_list_view_6">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>180</y>
-         <width>581</width>
-         <height>101</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_18">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>150</y>
-         <width>221</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
       <widget class="QPushButton" name="contract_search_btn_8">
        <property name="geometry">
         <rect>
-         <x>540</x>
+         <x>600</x>
          <y>10</y>
          <width>51</width>
          <height>23</height>
@@ -1088,65 +1057,26 @@
        </property>
        <property name="text">
         <string>조회</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_19">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>10</y>
-         <width>221</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="contract_view_label_32">
-       <property name="geometry">
-        <rect>
-         <x>240</x>
-         <y>10</y>
-         <width>61</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>고객ID</string>
        </property>
       </widget>
       <widget class="QLabel" name="contract_view_label_33">
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>420</y>
-         <width>61</width>
+         <y>410</y>
+         <width>141</width>
          <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>설치일자</string>
+        <string>담당자 ID</string>
        </property>
       </widget>
-      <widget class="QLabel" name="contract_view_label_34">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>330</y>
-         <width>51</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>설치번호</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="contract_search_btn_9">
+      <widget class="QPushButton" name="order_input_btn">
        <property name="geometry">
         <rect>
          <x>390</x>
-         <y>330</y>
+         <y>250</y>
          <width>51</width>
          <height>23</height>
         </rect>
@@ -1155,11 +1085,11 @@
         <string>입력 </string>
        </property>
       </widget>
-      <widget class="QDateEdit" name="dateEdit_5">
+      <widget class="QDateEdit" name="Orderdate">
        <property name="geometry">
         <rect>
-         <x>90</x>
-         <y>420</y>
+         <x>160</x>
+         <y>320</y>
          <width>281</width>
          <height>22</height>
         </rect>
@@ -1169,91 +1099,263 @@
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>390</y>
-         <width>71</width>
+         <y>350</y>
+         <width>141</width>
          <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>고객ID</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_20">
-       <property name="geometry">
-        <rect>
-         <x>90</x>
-         <y>330</y>
-         <width>281</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
+        <string>설치 사업장 ID</string>
        </property>
       </widget>
       <widget class="QLabel" name="contract_view_label_36">
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>360</y>
-         <width>71</width>
+         <y>320</y>
+         <width>111</width>
          <height>21</height>
         </rect>
        </property>
        <property name="text">
-        <string>담당자ID</string>
+        <string>오더 날짜</string>
        </property>
       </widget>
-      <widget class="QLabel" name="contract_view_label_37">
+      <widget class="QPushButton" name="order_delete_btn">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>300</y>
-         <width>101</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>설치기본정보</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_21">
-       <property name="geometry">
-        <rect>
-         <x>90</x>
-         <y>390</y>
-         <width>281</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_22">
-       <property name="geometry">
-        <rect>
-         <x>90</x>
-         <y>360</y>
-         <width>281</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="contract_search_btn_10">
-       <property name="geometry">
-        <rect>
-         <x>540</x>
-         <y>290</y>
+         <x>860</x>
+         <y>250</y>
          <width>51</width>
          <height>23</height>
         </rect>
        </property>
        <property name="text">
         <string>삭제</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="search_order_comboBox_2">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>10</y>
+         <width>131</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_51">
+       <property name="geometry">
+        <rect>
+         <x>370</x>
+         <y>10</y>
+         <width>221</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="contract_view_label_49">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>290</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>기기 번호</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="contract_view_label_50">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>380</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>철거 사업장 ID</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="search_order_comboBox_3">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>290</y>
+         <width>281</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="search_order_comboBox_4">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>350</y>
+         <width>281</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="search_order_comboBox_5">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>380</y>
+         <width>281</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="search_order_comboBox_6">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>410</y>
+         <width>281</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="OrderID">
+       <property name="geometry">
+        <rect>
+         <x>730</x>
+         <y>290</y>
+         <width>181</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="contract_view_label_37">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>390</y>
+         <width>141</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>설치 사업장 ID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="contract_view_label_51">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>360</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>오더 날짜</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="contract_view_label_52">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>320</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>기기 번호</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="contract_view_label_53">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>420</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>철거 사업장 ID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="contract_view_label_34">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>450</y>
+         <width>141</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>담당자 ID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="contract_view_label_54">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>290</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>오더 ID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="MachineID_2">
+       <property name="geometry">
+        <rect>
+         <x>730</x>
+         <y>320</y>
+         <width>181</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Orderdate_2">
+       <property name="geometry">
+        <rect>
+         <x>730</x>
+         <y>360</y>
+         <width>181</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Inst_BusID">
+       <property name="geometry">
+        <rect>
+         <x>730</x>
+         <y>390</y>
+         <width>181</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="Rem_BusID">
+       <property name="geometry">
+        <rect>
+         <x>730</x>
+         <y>420</y>
+         <width>181</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="TechnicianID_2">
+       <property name="geometry">
+        <rect>
+         <x>730</x>
+         <y>450</y>
+         <width>181</width>
+         <height>20</height>
+        </rect>
        </property>
       </widget>
      </widget>
@@ -1270,8 +1372,11 @@
          <height>521</height>
         </rect>
        </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tab_3">
         <attribute name="title">
@@ -1349,7 +1454,7 @@
           <rect>
            <x>10</x>
            <y>10</y>
-           <width>141</width>
+           <width>201</width>
            <height>17</height>
           </rect>
          </property>
@@ -1378,8 +1483,8 @@
         <widget class="QPushButton" name="bussiness_input_btn">
          <property name="geometry">
           <rect>
-           <x>460</x>
-           <y>310</y>
+           <x>520</x>
+           <y>306</y>
            <width>51</width>
            <height>23</height>
           </rect>
@@ -1393,7 +1498,7 @@
           <rect>
            <x>20</x>
            <y>330</y>
-           <width>71</width>
+           <width>131</width>
            <height>16</height>
           </rect>
          </property>
@@ -1404,7 +1509,7 @@
         <widget class="QLineEdit" name="BusName">
          <property name="geometry">
           <rect>
-           <x>90</x>
+           <x>336</x>
            <y>330</y>
            <width>181</width>
            <height>20</height>
@@ -1416,7 +1521,7 @@
           <rect>
            <x>20</x>
            <y>360</y>
-           <width>61</width>
+           <width>111</width>
            <height>16</height>
           </rect>
          </property>
@@ -1427,7 +1532,7 @@
         <widget class="QLineEdit" name="Busaddress">
          <property name="geometry">
           <rect>
-           <x>90</x>
+           <x>336</x>
            <y>360</y>
            <width>181</width>
            <height>20</height>
@@ -1439,7 +1544,7 @@
           <rect>
            <x>20</x>
            <y>390</y>
-           <width>51</width>
+           <width>121</width>
            <height>16</height>
           </rect>
          </property>
@@ -1450,7 +1555,7 @@
         <widget class="QLineEdit" name="Bustel">
          <property name="geometry">
           <rect>
-           <x>90</x>
+           <x>336</x>
            <y>390</y>
            <width>181</width>
            <height>20</height>
@@ -1460,7 +1565,7 @@
         <widget class="QLineEdit" name="Ower">
          <property name="geometry">
           <rect>
-           <x>80</x>
+           <x>336</x>
            <y>450</y>
            <width>181</width>
            <height>20</height>
@@ -1472,7 +1577,7 @@
           <rect>
            <x>20</x>
            <y>450</y>
-           <width>51</width>
+           <width>141</width>
            <height>16</height>
           </rect>
          </property>
@@ -1484,7 +1589,7 @@
          <property name="geometry">
           <rect>
            <x>580</x>
-           <y>310</y>
+           <y>306</y>
            <width>51</width>
            <height>23</height>
           </rect>
@@ -1498,7 +1603,7 @@
           <rect>
            <x>20</x>
            <y>420</y>
-           <width>71</width>
+           <width>101</width>
            <height>21</height>
           </rect>
          </property>
@@ -1509,9 +1614,9 @@
         <widget class="QLabel" name="contract_view_label_44">
          <property name="geometry">
           <rect>
-           <x>200</x>
+           <x>270</x>
            <y>420</y>
-           <width>71</width>
+           <width>111</width>
            <height>21</height>
           </rect>
          </property>
@@ -1522,9 +1627,9 @@
         <widget class="QDateEdit" name="StartDate">
          <property name="geometry">
           <rect>
-           <x>90</x>
+           <x>130</x>
            <y>420</y>
-           <width>101</width>
+           <width>131</width>
            <height>22</height>
           </rect>
          </property>
@@ -1532,24 +1637,11 @@
         <widget class="QDateEdit" name="EndDate">
          <property name="geometry">
           <rect>
-           <x>270</x>
+           <x>390</x>
            <y>420</y>
-           <width>101</width>
+           <width>131</width>
            <height>22</height>
           </rect>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="bussiness_modify_btn">
-         <property name="geometry">
-          <rect>
-           <x>520</x>
-           <y>310</y>
-           <width>51</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>수정</string>
          </property>
         </widget>
         <widget class="QComboBox" name="search_bussiness_comboBox">
@@ -1653,7 +1745,7 @@
         <widget class="QLineEdit" name="VendorTel">
          <property name="geometry">
           <rect>
-           <x>80</x>
+           <x>140</x>
            <y>410</y>
            <width>181</width>
            <height>20</height>
@@ -1663,7 +1755,7 @@
         <widget class="QLineEdit" name="VendorFax">
          <property name="geometry">
           <rect>
-           <x>80</x>
+           <x>140</x>
            <y>440</y>
            <width>181</width>
            <height>20</height>
@@ -1673,7 +1765,7 @@
         <widget class="QLineEdit" name="VendorName">
          <property name="geometry">
           <rect>
-           <x>80</x>
+           <x>140</x>
            <y>350</y>
            <width>181</width>
            <height>20</height>
@@ -1685,7 +1777,7 @@
           <rect>
            <x>10</x>
            <y>10</y>
-           <width>131</width>
+           <width>161</width>
            <height>17</height>
           </rect>
          </property>
@@ -1717,7 +1809,7 @@
         <widget class="QLineEdit" name="Vendoraddress">
          <property name="geometry">
           <rect>
-           <x>80</x>
+           <x>140</x>
            <y>380</y>
            <width>181</width>
            <height>20</height>
@@ -1727,7 +1819,7 @@
         <widget class="QPushButton" name="vendor_input_btn">
          <property name="geometry">
           <rect>
-           <x>450</x>
+           <x>510</x>
            <y>330</y>
            <width>51</width>
            <height>23</height>
@@ -1742,7 +1834,7 @@
           <rect>
            <x>10</x>
            <y>350</y>
-           <width>61</width>
+           <width>111</width>
            <height>20</height>
           </rect>
          </property>
@@ -1771,19 +1863,6 @@
          </property>
          <property name="text">
           <string>팩스</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="vendor_modify_btn">
-         <property name="geometry">
-          <rect>
-           <x>510</x>
-           <y>330</y>
-           <width>51</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>수정</string>
          </property>
         </widget>
         <widget class="QPushButton" name="vendor_delete_btn">
@@ -1827,20 +1906,20 @@
         <attribute name="title">
          <string>기기관리</string>
         </attribute>
-        <widget class="QLabel" name="contract_view_label_49">
+        <widget class="QLabel" name="machine_view_label_49">
          <property name="geometry">
           <rect>
-           <x>40</x>
-           <y>330</y>
-           <width>51</width>
+           <x>20</x>
+           <y>270</y>
+           <width>81</width>
            <height>16</height>
           </rect>
          </property>
          <property name="text">
-          <string>제품명</string>
+          <string>송장번호</string>
          </property>
         </widget>
-        <widget class="QTableWidget" name="contract_list_view_8">
+        <widget class="QTableWidget" name="view_machine_input">
          <property name="geometry">
           <rect>
            <x>10</x>
@@ -1849,69 +1928,41 @@
            <height>181</height>
           </rect>
          </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string>기기번호</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>송장번호</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>상품번호</string>
+          </property>
+         </column>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_35">
+        <widget class="QLineEdit" name="invoiceID">
          <property name="geometry">
           <rect>
-           <x>100</x>
-           <y>330</y>
+           <x>110</x>
+           <y>270</y>
            <width>181</width>
            <height>20</height>
           </rect>
          </property>
         </widget>
-        <widget class="QLabel" name="contract_view_label_52">
-         <property name="geometry">
-          <rect>
-           <x>310</x>
-           <y>300</y>
-           <width>51</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>구매가격</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_36">
-         <property name="geometry">
-          <rect>
-           <x>100</x>
-           <y>360</y>
-           <width>181</width>
-           <height>20</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="contract_view_label_53">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>420</y>
-           <width>51</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>설치일자</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_37">
-         <property name="geometry">
-          <rect>
-           <x>100</x>
-           <y>300</y>
-           <width>181</width>
-           <height>20</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="contract_view_label_54">
+        <widget class="QLabel" name="machine_view_label_54">
          <property name="geometry">
           <rect>
            <x>10</x>
            <y>20</y>
-           <width>104</width>
+           <width>171</width>
            <height>17</height>
           </rect>
          </property>
@@ -1927,55 +1978,6 @@
           <string>설치 기기 리스트</string>
          </property>
         </widget>
-        <widget class="QLabel" name="contract_view_label_55">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>360</y>
-           <width>51</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>제조사</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="contract_view_label_57">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>390</y>
-           <width>51</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>배송일자</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="contract_view_label_58">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>300</y>
-           <width>51</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>제품번호</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_39">
-         <property name="geometry">
-          <rect>
-           <x>370</x>
-           <y>300</y>
-           <width>181</width>
-           <height>20</height>
-          </rect>
-         </property>
-        </widget>
         <widget class="QLineEdit" name="lineEdit_50">
          <property name="geometry">
           <rect>
@@ -1986,7 +1988,7 @@
           </rect>
          </property>
         </widget>
-        <widget class="QComboBox" name="search_vendor_comboBox_2">
+        <widget class="QComboBox" name="search_machine_comboBox">
          <property name="geometry">
           <rect>
            <x>190</x>
@@ -1996,7 +1998,7 @@
           </rect>
          </property>
         </widget>
-        <widget class="QPushButton" name="vendor_search_btn_2">
+        <widget class="QPushButton" name="machine_search_btn_2">
          <property name="geometry">
           <rect>
            <x>560</x>
@@ -2009,54 +2011,11 @@
           <string>조회</string>
          </property>
         </widget>
-        <widget class="QLabel" name="contract_view_label_56">
+        <widget class="QLineEdit" name="productID">
          <property name="geometry">
           <rect>
-           <x>40</x>
-           <y>450</y>
-           <width>51</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>회수일자</string>
-         </property>
-        </widget>
-        <widget class="QDateEdit" name="StartDate_2">
-         <property name="geometry">
-          <rect>
-           <x>100</x>
-           <y>390</y>
-           <width>181</width>
-           <height>22</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QDateEdit" name="StartDate_3">
-         <property name="geometry">
-          <rect>
-           <x>100</x>
-           <y>420</y>
-           <width>181</width>
-           <height>22</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QDateEdit" name="StartDate_4">
-         <property name="geometry">
-          <rect>
-           <x>100</x>
-           <y>450</y>
-           <width>181</width>
-           <height>22</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_40">
-         <property name="geometry">
-          <rect>
-           <x>370</x>
-           <y>330</y>
+           <x>110</x>
+           <y>300</y>
            <width>181</width>
            <height>20</height>
           </rect>
@@ -2065,33 +2024,20 @@
           <string/>
          </property>
         </widget>
-        <widget class="QLabel" name="contract_view_label_59">
+        <widget class="QLabel" name="machine_view_label_59">
          <property name="geometry">
           <rect>
-           <x>310</x>
-           <y>330</y>
-           <width>51</width>
+           <x>20</x>
+           <y>300</y>
+           <width>81</width>
            <height>16</height>
           </rect>
          </property>
          <property name="text">
-          <string>재고수량</string>
+          <string>상품번호</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="vendor_modify_btn_2">
-         <property name="geometry">
-          <rect>
-           <x>500</x>
-           <y>240</y>
-           <width>51</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>수정</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="vendor_delete_btn_2">
+        <widget class="QPushButton" name="machine_delete_btn">
          <property name="geometry">
           <rect>
            <x>560</x>
@@ -2104,16 +2050,42 @@
           <string>삭제</string>
          </property>
         </widget>
+        <widget class="QPushButton" name="machine_input_btn">
+         <property name="geometry">
+          <rect>
+           <x>500</x>
+           <y>240</y>
+           <width>51</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>입력</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="MachineID">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>240</y>
+           <width>61</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </widget>
        <widget class="QWidget" name="tab_7">
         <attribute name="title">
          <string>담당자관리</string>
         </attribute>
-        <widget class="QPushButton" name="contract_search_btn_23">
+        <widget class="QPushButton" name="tech_search_btn_23">
          <property name="geometry">
           <rect>
-           <x>470</x>
-           <y>0</y>
+           <x>520</x>
+           <y>10</y>
            <width>51</width>
            <height>23</height>
           </rect>
@@ -2122,71 +2094,48 @@
           <string>조회</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="contract_search_btn_24">
-         <property name="geometry">
-          <rect>
-           <x>530</x>
-           <y>0</y>
-           <width>51</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>삭제</string>
-         </property>
-        </widget>
-        <widget class="QTableWidget" name="contract_list_view_11">
+        <widget class="QTableWidget" name="view_tech_input">
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>30</y>
+           <y>40</y>
            <width>581</width>
-           <height>181</height>
+           <height>171</height>
           </rect>
          </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string>담당자 ID</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>담당자 이름</string>
+          </property>
+         </column>
         </widget>
-        <widget class="QLabel" name="contract_view_label_83">
+        <widget class="QLabel" name="tech_view_label_83">
          <property name="geometry">
           <rect>
-           <x>170</x>
-           <y>0</y>
-           <width>61</width>
+           <x>190</x>
+           <y>10</y>
+           <width>81</width>
            <height>21</height>
           </rect>
          </property>
          <property name="text">
-          <string>사업장 ID</string>
+          <string>담당자 ID</string>
          </property>
         </widget>
-        <widget class="QLabel" name="contract_view_label_84">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>220</y>
-           <width>101</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>담당자 입력</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_64">
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>250</y>
-           <width>181</width>
-           <height>20</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="contract_view_label_87">
+        <widget class="QLabel" name="tech_view_label_87">
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
-           <width>104</width>
+           <y>10</y>
+           <width>151</width>
            <height>17</height>
           </rect>
          </property>
@@ -2199,15 +2148,15 @@
           </font>
          </property>
          <property name="text">
-          <string>사업장 리스트</string>
+          <string>담당자리스트</string>
          </property>
         </widget>
-        <widget class="QLabel" name="contract_view_label_89">
+        <widget class="QLabel" name="tech_view_label_89">
          <property name="geometry">
           <rect>
            <x>0</x>
            <y>280</y>
-           <width>81</width>
+           <width>111</width>
            <height>16</height>
           </rect>
          </property>
@@ -2215,50 +2164,63 @@
           <string>담당자이름</string>
          </property>
         </widget>
-        <widget class="QLineEdit" name="lineEdit_65">
+        <widget class="QLineEdit" name="TechnicianName">
          <property name="geometry">
           <rect>
-           <x>90</x>
+           <x>120</x>
            <y>280</y>
            <width>181</width>
            <height>20</height>
           </rect>
          </property>
         </widget>
-        <widget class="QPushButton" name="contract_search_btn_25">
+        <widget class="QPushButton" name="tech_input_btn">
          <property name="geometry">
           <rect>
-           <x>520</x>
-           <y>230</y>
+           <x>470</x>
+           <y>220</y>
            <width>51</width>
            <height>23</height>
           </rect>
          </property>
          <property name="text">
-          <string>저장</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="contract_view_label_91">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>250</y>
-           <width>51</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>담당자ID</string>
+          <string>입력</string>
          </property>
         </widget>
         <widget class="QLineEdit" name="lineEdit_67">
          <property name="geometry">
           <rect>
-           <x>240</x>
-           <y>0</y>
+           <x>280</x>
+           <y>10</y>
            <width>221</width>
            <height>20</height>
           </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="tech_delete_btn">
+         <property name="geometry">
+          <rect>
+           <x>530</x>
+           <y>220</y>
+           <width>51</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>삭제</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="TechnicianID">
+         <property name="geometry">
+          <rect>
+           <x>120</x>
+           <y>250</y>
+           <width>61</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </widget>
